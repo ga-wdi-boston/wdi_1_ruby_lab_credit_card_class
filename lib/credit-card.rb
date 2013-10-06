@@ -9,24 +9,25 @@ class CreditCard
 		@ccv = ccv.to_s
 		@name = name
 		@zip_code = zip_code.to_s
-		if valid? != true
+		unless valid?
 			return valid?
 		end
 	end
 
 	def valid?
 		if @number.length != 16
-			return "Error: Card number is not 16 digits long."
+			return "Error: card number is not 16 digits long."
 		elsif expired? == true
-			return "Error: Card is expired."
+			return "Error: card is expired."
 		elsif @name.class != String
 			return "Error: not a valid name."
 		elsif @zip_code.length != 5
 			return "Error: zip code invalid."
+		elsif valid_number? == false
+			return "Error: invalid card number."
 		else
 			return true
 		end
-
 	end
 
 	def expired?
@@ -39,4 +40,27 @@ class CreditCard
 			return false
 		end
 	end
-end
+
+# 	def valid_number?
+
+# 		step_1 = @number.reverse
+# 		step_2 = step_1.split("")
+# 		step_3 = step_2.map.with_index do |digit, index|
+# 				if index % 2 == 1
+# 				digit.to_i * 2
+# 				else
+# 				digit.to_i
+# 				end
+# 		end
+# 		# binding.pry
+
+# 		# step_4 = step_3.each do |num| 
+# 		# 	num.to_s!
+# 		# 	num.split("")
+# 		# end
+
+# 	end
+
+# end
+
+
