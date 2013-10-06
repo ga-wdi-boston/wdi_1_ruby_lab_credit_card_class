@@ -81,17 +81,14 @@ class CreditCard
 	def valid?
 		if valid_number && has_name && valid_zip && valid_date && (self.card_type != "Other")
 			puts 'This is a valid ' + self.card_type + ' card!'
+			return true
 		elsif valid_number && has_name && valid_zip && valid_date && (self.card_type == "Other")
 			puts 'This is a valid card, but the card type is not one of the three recognized types.'
+			return true
 		else
 			puts "This is not a valid card!"
+			return false
 		end
 	end
 
 end
-
-
-card = CreditCard.new("6011116929497996", "09/14", "333", "Blake Ruddock", "06832")
-
-
-puts card.valid?
