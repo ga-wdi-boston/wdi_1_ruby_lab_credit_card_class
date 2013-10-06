@@ -3,7 +3,7 @@ require_relative '../lib/credit-card'
 
 describe CreditCard do
 
-	subject {CreditCard.new(5463_2874_5678_0987, '1113', 623, "Matt Clement", 02143)}
+	subject {CreditCard.new(5463_2874_5678_0987, '1113', 623, "Matt Clement", 78782)}
 
 	it "should be valid" do
 		subject.valid?.should be true

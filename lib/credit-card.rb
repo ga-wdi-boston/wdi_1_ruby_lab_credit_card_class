@@ -4,24 +4,24 @@ class CreditCard
 	attr_accessor :number, :expiration_date, :ccv, :name, :zip_code
 
 	def initialize(number, expiration_date, ccv, name, zip_code)
-		@number = number
-		@expiration_date = expiration_date
-		@ccv = ccv
+		@number = number.to_s
+		@expiration_date = expiration_date.to_s
+		@ccv = ccv.to_s
 		@name = name
-		@zip_code = zip_code 
+		@zip_code = zip_code.to_s
 		if valid? != true
-			puts valid?
+			return valid?
 		end
 	end
 
 	def valid?
-		if @number.to_s.length != 16
+		if @number.length != 16
 			return "Error: Card number is not 16 digits long."
 		elsif expired? == true
 			return "Error: Card is expired."
 		elsif @name.class != String
 			return "Error: not a valid name."
-		elsif @zip_code.to_s.length != 5
+		elsif @zip_code.length != 5
 			return "Error: zip code invalid."
 		else
 			return true
@@ -40,15 +40,3 @@ class CreditCard
 		end
 	end
 end
-
-d = Date.parse('3rd Feb 2001')
-                             #=> #<Date: 2001-02-03 ...>
-d.year                       #=> 2001
-d.mon                        #=> 2
-d.mday                       #=> 3
-d.wday                       #=> 6
-d += 1                       #=> #<Date: 2001-02-04 ...>
-d.strftime('%a %d %b %Y')    #=> "Sun 04 Feb 2001"
-
-
-# card = CreditCard.new(5463_2874_5678_0987, 0613, 623, "Matt Clement", 02143)
