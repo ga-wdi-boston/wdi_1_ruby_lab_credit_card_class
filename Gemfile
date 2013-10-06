@@ -1,2 +1,4 @@
 source 'https:://rubygems.org'
-require 'pry'
+gem 'pry'
+gem 'simplecov', require: false
+gem 'guard-rspec'
