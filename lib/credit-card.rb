@@ -10,7 +10,7 @@ class CreditCard
 		@name = name
 		@zip_code = zip_code 
 		if valid? != true
-			return "Error: your credit card"
+			puts valid?
 		end
 	end
 
@@ -19,6 +19,10 @@ class CreditCard
 			return "Error: Card number is not 16 digits long."
 		elsif expired? == true
 			return "Error: Card is expired."
+		elsif @name.class != String
+			return "Error: not a valid name."
+		elsif @zip_code.to_s.length != 5
+			return "Error: zip code invalid."
 		else
 			return true
 		end
