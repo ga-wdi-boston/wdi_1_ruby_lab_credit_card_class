@@ -9,9 +9,7 @@ class CreditCard
 		@ccv = ccv.to_s
 		@name = name
 		@zip_code = zip_code.to_s
-		unless valid?
-			return valid?
-		end
+		valid?
 	end
 
 	def valid?
@@ -41,26 +39,41 @@ class CreditCard
 		end
 	end
 
-# 	def valid_number?
+	def valid_number?
 
-# 		step_1 = @number.reverse
-# 		step_2 = step_1.split("")
-# 		step_3 = step_2.map.with_index do |digit, index|
-# 				if index % 2 == 1
-# 				digit.to_i * 2
-# 				else
-# 				digit.to_i
-# 				end
-# 		end
-# 		# binding.pry
+		step_1 = @number.reverse
+		step_2 = step_1.split("")
+		step_3 = step_2.map.with_index do |digit, index|
+				if index % 2 == 1
+				digit.to_i * 2
+				else
+				digit.to_i
+				end
+		end
+		step_4 = step_3.map do |num| 
+			num = num.to_s
+			if num.length > 1
+				arr = [num[0], num[1]]
+			else 
+				num
+			end
+		end
+		step_5 = step_4.flatten
+		step_6 = step_5.inject(0) do |sum, digit|
+			sum += digit.to_i
+		end
+		if step_6 % 10 == 0
+			return true
+		else
+			return false
+		end
+	end
 
-# 		# step_4 = step_3.each do |num| 
-# 		# 	num.to_s!
-# 		# 	num.split("")
-# 		# end
+end
 
-# 	end
 
-# end
+# card = CreditCard.new(1234_5678_9012_3456, '1014', 623, "Matt Clement", 92143)
+
+
 
 
