@@ -20,6 +20,7 @@ class CreditCard
 		@zip = zip.to_s
 	end
 
+
 	def valid_number
 		number_array = @number.chars
 		number_array.reverse!
@@ -45,8 +46,25 @@ class CreditCard
 
 		sum = @odd_numbers + @even_numbers
 		return sum % 10 == 0
+	end
+
+
+	def card_type
+		
+		if @number[0..1] == "34" || @number[0..1] == "37"
+			return "American Express"
+		elsif @number[0] == "4"
+			return "Visa"
+		elsif @number[0..1] == "51" || @number[0..1] == "52" || 
+			@number[0..1] == "53" || @number[0..1] == "54"  || 
+			@number[0..1] == "55"
+			return "MasterCard"
+		else
+			return "Other"
+		end
 
 	end
+
 
 	def has_name
 		@name.validate(/[a-zA-Z]{1,}/)
@@ -61,26 +79,19 @@ class CreditCard
 	end
 
 	def valid?
-		valid_number && has_name && valid_zip && valid_date
+		if valid_number && has_name && valid_zip && valid_date && (self.card_type != "Other")
+			puts 'This is a valid ' + self.card_type + ' card!'
+		elsif valid_number && has_name && valid_zip && valid_date && (self.card_type == "Other")
+			puts 'This is a valid card, but the card type is not one of the three recognized types.'
+		else
+			puts "This is not a valid card!"
+		end
 	end
 
 end
 
 
-card = CreditCard.new("375421657316548", "09/14", "333", "Blake Ruddock", "06832")
+card = CreditCard.new("6011116929497996", "09/14", "333", "Blake Ruddock", "06832")
 
 
-puts card.valid_number
-
-
-# - Credit card # (16-digits)
-# - Expiration Date (two digit month, two digit year)
-# - CCV (3 digit number on the back)
-# - Name
-# - Billing Zip Code (5-digits)
-
-# It should have the following methods: 
-
-# - `initialize` - Used for creating a new credit card. 
-# - `valid?` - This checks the validity of the credit card. Check that it has a name, 
-# proper length zip code, 16-digit number and an expiration date in the future. 
+puts card.valid?
