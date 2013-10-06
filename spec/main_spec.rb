@@ -4,7 +4,7 @@ require_relative '../lib/main'
 
 describe CreditCard do
 
-  subject { CreditCard.new("1234567890123456", "09/14", "333", "Blake Ruddock", "06832") }
+  subject { CreditCard.new("4532584758868410", "09/14", "333", "Blake Ruddock", "06832") }
 
   its(:valid_number) { should eq true}
   its(:has_name) { should eq true}

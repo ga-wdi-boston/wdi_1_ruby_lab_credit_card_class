@@ -21,7 +21,31 @@ class CreditCard
 	end
 
 	def valid_number
-		@number.validate(/\d{16}/)
+		number_array = @number.chars
+		number_array.reverse!
+		@odd_numbers = 0
+		@even_numbers = 0
+
+		number_array.each_with_index do |number, index|
+			##odd indices, even numbers
+			if index % 2 == 1
+				double = number.to_i * 2
+					if double > 9
+						numbers = double.to_s.chars
+						numbers.each {|x| @even_numbers += x.to_i }
+					else 
+						@even_numbers += double
+					end
+			#even indices, odd numbers
+			else 
+				@odd_numbers += number.to_i
+			end
+
+		end
+
+		sum = @odd_numbers + @even_numbers
+		return sum % 10 == 0
+
 	end
 
 	def has_name
@@ -42,10 +66,11 @@ class CreditCard
 
 end
 
-card = CreditCard.new("1234567890123456", "09/14", "333", "Blake Ruddock", "06832")
 
-# binding.pry
+card = CreditCard.new("375421657316548", "09/14", "333", "Blake Ruddock", "06832")
 
+
+puts card.valid_number
 
 
 # - Credit card # (16-digits)
