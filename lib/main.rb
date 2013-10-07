@@ -30,12 +30,12 @@ class CreditCard
 		number_array.each_with_index do |number, index|
 			##odd indices, even numbers
 			if index % 2 == 1
-				double = number.to_i * 2
-					if double > 9
-						numbers = double.to_s.chars
+				number_doubled = number.to_i * 2
+					if number_doubled > 9
+						numbers = number_doubled.to_s.chars
 						numbers.each {|x| @even_numbers += x.to_i }
 					else 
-						@even_numbers += double
+						@even_numbers += number_doubled
 					end
 			#even indices, odd numbers
 			else 
