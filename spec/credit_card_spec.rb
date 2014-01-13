@@ -9,19 +9,19 @@ describe CreditCard do
 
 	describe '#initialize' do
 		it 'requires parameter number and assigns to attribute' do
-			expect (@test_card.number).to eq 3333444455556666
+			expect(@test_card.number).to eq 3333444455556666
 		end
 
 		it 'requires parameter exp_date and assigns to attribute' do
-			expect (@test_card.exp_date).to eq 1212
+			expect(@test_card.exp_date).to eq 1212
 		end
 
 		it 'requires parameter ccv and assigns to attribute' do
-			expect (@test_card.ccv).to eq 333
+			expect(@test_card.ccv).to eq 333
 		end
 
 		it 'requires parameter name and assigns to attribute' do
-			expect (@test_card.name).to eq 'Em Sesier'
+			expect(@test_card.name).to eq 'Em Sesier'
 		end
 
 	end
