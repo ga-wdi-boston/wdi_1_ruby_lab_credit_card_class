@@ -11,9 +11,8 @@ class CreditCard
   def valid?
     return false if @num.size != 16
 
-    date_string = @exp.to_s
-    month = date_string[0,2].to_i
-    year = date_string[2,2].to_i
+    month = @exp[0,2].to_i
+    year = @exp[2,2].to_i
     now = Time.new
 
     if year < now.year

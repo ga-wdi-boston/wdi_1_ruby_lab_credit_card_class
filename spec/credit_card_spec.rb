@@ -7,7 +7,7 @@ describe CreditCard do
     it 'creates a CreditCard instance when called' do
       new_cc = CreditCard.new(
         4222574612345678,
-        0515,
+        "0515",
         643,
         "Prescott",
         "02150")
@@ -19,7 +19,7 @@ describe CreditCard do
     it 'returns false if number not 16-digit' do
       new_cc = CreditCard.new(
         1,
-        0515,
+        "0515",
         643,
         "Prescott",
         "02150")
@@ -28,7 +28,7 @@ describe CreditCard do
     it 'returns false if exp date not in future' do
       new_cc = CreditCard.new(
         1,
-        0512,
+        "0512",
         643,
         "Prescott",
         "02150")
@@ -37,7 +37,7 @@ describe CreditCard do
     it 'returns false if name empty' do
       new_cc = CreditCard.new(
         1,
-        0515,
+        "0515",
         643,
         "",
         02150)
@@ -46,7 +46,7 @@ describe CreditCard do
      it 'returns false if zipcode improper length' do
       new_cc = CreditCard.new(
         1,
-        0515,
+        "0515",
         643,
         "",
         "021504")
@@ -58,7 +58,7 @@ describe CreditCard do
     it 'returns Visa if number starts with 4' do
       new_cc = CreditCard.new(
         4322444444444444,
-        0515,
+        "0515",
         643,
         "Prescott",
         "02150")
