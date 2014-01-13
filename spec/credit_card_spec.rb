@@ -3,6 +3,13 @@ require 'spec_helper'
 require_relative "../lib/credit_card"
 
 describe CreditCard do
+	# before(:each) do
+	# 	test_credit_card = CreditCard.new
+	# 	test_credit_card.name = "Jan"
+	# 	test_credit_card.credit_card_number = "1234567891234567"
+	# 	test_credit_card.expiration_date = "0118"
+	# 	test_credit_card.billing_zip = "03082"
+	# end
 
 	describe '#initialize' do
 
