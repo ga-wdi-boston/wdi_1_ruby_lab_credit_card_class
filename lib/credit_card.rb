@@ -10,6 +10,7 @@ class CreditCard
   end
 
   def valid?
+    # I used an Amex card as a guide.. should be 16!!
     @number.length == 15 && @number.to_i != 0 &&
     @exp_date.length == 5 && @exp_date[0,2].to_i <= 12 && @exp_date[-2,2].to_i <= 31 &&
     @ccv.length == 3 && @ccv.to_i != 0 &&
