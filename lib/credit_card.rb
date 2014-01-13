@@ -5,7 +5,7 @@ class CreditCard
 		@credit_card_num = credit_card_num
 		@expiration_date = expiration_date
 		@ccv = ccv
-		@name = Name
+		@name = name
 		@billing_zip_code = billing_zip_code
 	end
 
@@ -14,19 +14,19 @@ class CreditCard
 			return false
 		end
 
-		if @expiration_date.lengt != 4
+		if @expiration_date.length != 4
 			return false
 		end
 
-		if @ccv.lengt != 3
+		if @ccv.length != 3
 				return false
 		end
 
-		if name == nil
+		if @name == nil
 			return false
 		end
 
-		if billing_zip_code != 5
+		if @billing_zip_code != 5
 			return true
 		end
 		puts "The credit card is valid"
