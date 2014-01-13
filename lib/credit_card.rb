@@ -1,11 +1,8 @@
-require 'date'
+require 'time'
 class CreditCard
+	attr_reader :card_num, :exp_date, :cvv, :name, :zip
 	def initialize(card_num, exp_date, cvv, name, zip)
-		if card_num.to_s.length != 16
-			@card_num = "ERROR"
-		else
-			@card_num = card_num
-		end
+		@card_num = card_num
 		@exp_date = exp_date
 		@cvv = cvv
 		@name = name
@@ -13,16 +10,16 @@ class CreditCard
 	end
 
 	def valid?
-		if (@card_num.to_s.length == 16) && @name
-			exp_time = Time.parse @exp_date
-			if exp_time > Time.new
-				return true
-			else
-				return false
-			end
-			return false
-		end
+		!@name.empty? && @zip.length == 5 && @card_num.length == 16 && !expired?
+	end
+
+	def expired?
+		@exp_date[-2,2].to_i <= (Time.new.year-2000)
+	end
+
+	def card_type
+		'Visa' if @card_num.start_with?('4')
+		'Amex' if @card_num.to_i.start_with?(51..55)
 	end
 end
 
-puts CreditCard.new(1234567891234567, "12/15", 244, "Mike Stone", "02118").inspect
