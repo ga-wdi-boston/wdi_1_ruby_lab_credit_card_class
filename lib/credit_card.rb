@@ -23,12 +23,16 @@ class CreditCard
 	end
 
 	def zip_check
-		return @zip.to_s
+		return @zip.length == 5
 	end
 
 	def number_check
 		return @number.to_s.length == 16
 	end
+
+	def date_check
+	end
+
 
 end
 
