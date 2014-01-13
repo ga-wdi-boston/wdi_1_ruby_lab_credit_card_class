@@ -1,31 +1,23 @@
-# The CreditCard class should have the following attributes:
-
-# Credit card # (16-digits)
-# Expiration Date (two digit month, two digit year)
-# CCV (3 digit number on the back)
-# Name
-# Billing Zip Code (5-digits)
-# It should have the following methods:
-
-# initialize - Used for creating a new credit card.
-# valid? - This checks the validity of the credit card. Check that it has a name, proper length zip code, 16-digit number and an expiration date in the future.
-
-
 class CreditCard
 
-	attr_accessor :card_num, :exp
+	attr_accessor :number, :exp, :cvv, :name, :zipcode
 
-	def initialize(card_num, exp)
-		@card_num = card_num
+	def initialize(number, exp, cvv, name, zipcode)
+		@number = number
 		@exp = exp
+		@cvv = cvv
+		@name = name
+		@zipcode = zipcode
 	end
 
-	def length(passin)
-		passin.length
+	def valid?
+		!@name.empty? && @zipcode.length == 5 && number.length == 16 && !expired?
 	end
 
-
-
-
+	def expired?
+		@exp[3,2].to_i < (Time.now.year.to_i - 2000)
+	end
 
 end
+
+
