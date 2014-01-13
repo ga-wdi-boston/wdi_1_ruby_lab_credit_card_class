@@ -9,13 +9,13 @@ class CreditCard
   end
 
   def valid?
-    return false if @num.size != 16
+    return false if @num.to_s.size != 16
 
     month = @exp[0,2].to_i
     year = @exp[2,2].to_i
     now = Time.new
 
-    if year < now.year
+    if year < now.year - 2000 # Convert 2014 to 14
       return false
     elsif year == now.year && month < now.month
       return false
@@ -23,6 +23,8 @@ class CreditCard
 
     return false if @name.length < 1
     return false if @zip.length != 5
+
+    return true
   end
 
   def card_type

@@ -52,13 +52,22 @@ describe CreditCard do
         "021504")
       expect(new_cc.valid?).to eq false
     end
+    it 'returns valid if attributes appropriate' do
+      new_cc = CreditCard.new(
+        4322444444444444,
+        "0515",
+        643,
+        "Prescott",
+        "02150")
+      expect(new_cc).to be_valid
+    end
   end
 
   describe '#card_type' do
     it 'returns Visa if number starts with 4' do
       new_cc = CreditCard.new(
         4322444444444444,
-        "0515",
+        "1115",
         643,
         "Prescott",
         "02150")
