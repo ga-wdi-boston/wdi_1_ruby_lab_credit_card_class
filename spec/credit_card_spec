@@ -1,0 +1,19 @@
+require 'spec_helper'
+require_relative "../lib/credit_card.rb"
+
+describe CreditCard do
+				describe 'initialize2' do
+					it 'creates a new credit card' do
+						new_card = CreditCard.new
+	   				  expect(new_card.initialize).to eq
+    end
+	end
+end
+
+describe CreditCard do
+				describe 'determines whether a credit card is valid' do
+					it 'checks the length of the zip code and credit card number, ensures an expiration date in the future and a name on the card' do
+						valid = CreditCard.new
+	   				  expect(.valid).to eq #today's date + 1
+    end
+	end
