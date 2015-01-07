@@ -1,1 +1,9 @@
-# wdi_1_ruby_assessment_prework
+![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
+
+# Assignment Name
+
+## Objectives
+
+## Instructions
+
+## Notes
