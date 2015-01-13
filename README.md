@@ -1,39 +1,23 @@
 ![General Assembly Logo](http://i.imgur.com/ke8USTq.png)
 
-# Assignment Name (Ruby String Lab)
+# Lab: Credit Card Class w/RSpec
 
-## Objectives
+Use RSpec and TDD (write test first, then code. Small pieces at a time) to write tests and a class to describe a `CreditCard`.
 
-By the end of this, students should be able to:
+The `CreditCard` class should have the following attributes:
 
-- Objective 1
-- Objective 2
-- Objective 3
+- Credit card # (16-digits)
+- Expiration Date (two digit month, two digit year)
+- CCV (3 digit number on the back)
+- Name
+- Billing Zip Code (5-digits)
 
-## Instructions
+It should have the following methods:
 
-Include explict step-by-step instructions about the goals of the assignment, and how to run the code.
+- `initialize` - Used for creating a new credit card.
+- `valid?` - This checks the validity of the credit card. Check that it has a name, proper length zip code, 16-digit number and an expiration date in the future.
 
-Make sure to wrap section of code in appropriate markdown like `ls -al`, and denote the language as below for longer sections:
+Do *not* check a real credit card number into version control.
 
-```ruby
-x = 2
-y = 3
-puts x + y
-```
-
-## Bonus (Optional Section)
-
-If you're looking for extra challenge or practice once you've completed the above, try to...
-
-## Notes
-
-Gotcha's and extra information
-
-## Additional Resources
-
-List additional related resources such as videos, blog posts and official documentation.
-
-- Item 1
-- Item 2
-- Item 3
+- Use a Luhn algorthm to determine if the credit card number is potentially valid
+- Write a `card_type` method that will return Visa, MasterCard, Discover, American Express or Other
