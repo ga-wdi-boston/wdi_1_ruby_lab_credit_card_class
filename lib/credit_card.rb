@@ -51,7 +51,7 @@ class CreditCard
     #Applies Luhms Theorum
     digits = number.to_s.scan(/./).map(&:to_i)
     sum = digits.reverse.each_slice(2).map do |x, y|
-      [(x * 2).divmod(10), y]
+      [(y * 2).divmod(10), x]
     end.flatten.inject(:+)
     third = (sum % 10) == 0
 
