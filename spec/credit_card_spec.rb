@@ -69,4 +69,10 @@ RSpec.describe CreditCard do
     end
   end
 
+  describe '#card_type' do
+    it 'returns the card issuer (e.g. Visa)' do
+      expect(credit_card.card_type).to be 'American Express'
+    end
+  end
+
 end
