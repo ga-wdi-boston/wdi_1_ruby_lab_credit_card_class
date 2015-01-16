@@ -37,19 +37,19 @@ class CreditCard
 
   def card_type
     # American Express. First digit must be a 3 and second digit must be a 4 or 7. Valid length: 15 digits.
-    if @card_number.to_s[0] = "3" &&
-      (@card_number.to_s[1].to_s = "4" ||
-      @card_number.to_s[1].to_s = "7") &&
+    if @card_number.to_s[0] == "3" &&
+      (@card_number.to_s[1] == "4" ||
+      @card_number.to_s[1] == "7") &&
       @card_number.to_s.length == 15
       card_type = "American Express"
     # Mastercard/First digit must be a 5 and second digit must be in the range 1 through 5 inclusive
-    elsif @card_number.to_s[0] = "5" &&
+    elsif @card_number.to_s[0] == "5" &&
       (@card_number.to_s[1] >= 1 &&
       @card_number.to_s[1] <= 5) &&
       @card_number.to_s.length == 16
       card_type = "Mastercard"
     # Visa/First digit must be a 4. Valid length: 13 or 16 digits.
-    elsif @card_number.to_s[0] = "4" &&
+    elsif @card_number.to_s[0] == "4" &&
       (@card_number.to_s.length == 13 ||
       @card_number.to_s.length == 16)
       card_type = "Visa"
