@@ -6,4 +6,26 @@ class CreditCard
     @expiration = expiration
     @ccv = ccv
   end
+
+  def name
+    @name
+  end
+
+  def zip
+    @zip
+  end
+
+  def card_number
+    @card_number
+  end
+
+  def expiration
+    @expiration
+  end
+
+  def ccv
+    @ccv
+  end
+
+
 end
