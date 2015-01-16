@@ -27,7 +27,6 @@ class CreditCard
     even_arr, odd_arr = split_arr(card_arr)
     odd_sum = sum_arr(odd_arr)
 
-    #doub_even_arr = double(even_arr)
     even_sig_arr = split_digit(even_arr.map{|num| num * 2})
     even_sum = sum_arr(even_sig_arr)
 
@@ -38,11 +37,6 @@ class CreditCard
   def split_digit(arr)
     arr.join.split("").map{|num| num.to_i}
   end
-
-  #Doubles each integer in an arr
-  #def double(arr)
-   # arr.map{|num| num * 2}
-  #end
 
   #Adds up all array elements
   def sum_arr(arr)
