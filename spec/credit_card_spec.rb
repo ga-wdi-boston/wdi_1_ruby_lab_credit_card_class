@@ -39,7 +39,7 @@ RSpec.describe CreditCard do
 
   subject(:card) { CreditCard.new(card_num, expiration_date, ccv, name, zip_code) }
 
-   #inValid credit card number #4444333322221110
+   #inValid credit card number #7444333322221110
   describe '#valid?' do
     it 'Return if a credit card number is valid' do
       expect(card.valid?).to be false
@@ -64,7 +64,7 @@ RSpec.describe CreditCard do
 
   subject(:card) { CreditCard.new(card_num, expiration_date, ccv, name, zip_code) }
 
-   #inValid credit card number #4444333322221110
+   #Valid credit card number #6011328294371512
   describe '#valid?' do
     it 'Return if a credit card number is valid' do
       expect(card.valid?).to be true
@@ -89,7 +89,7 @@ RSpec.describe CreditCard do
 
   subject(:card) { CreditCard.new(card_num, expiration_date, ccv, name, zip_code) }
 
-   #inValid credit card number #4444333322221110
+   #inValid credit card number #3011328294371512
   describe '#valid?' do
     it 'Return if a credit card number is valid' do
       expect(card.valid?).to be false
