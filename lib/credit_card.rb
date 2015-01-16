@@ -1,4 +1,5 @@
 require 'date'
+require 'pry'
 
 class CreditCard
   def initialize(number, exp_month, exp_year, cvv, name, zip)
@@ -35,7 +36,6 @@ class CreditCard
   end
 
   def valid?
-
     # Checks the validity of the credit card number length, zip length and name
     first = number.to_s.length == 16 && @zip.to_s.length == 5 && name.is_a?(String)
 
@@ -48,13 +48,14 @@ class CreditCard
     check == -1 ? second = true : second = false
 
 
-    # Applies Luhms Theorum
+    #Applies Luhms Theorum
     digits = number.to_s.scan(/./).map(&:to_i)
-    check = digits.pop
     sum = digits.reverse.each_slice(2).map do |x, y|
       [(x * 2).divmod(10), y || 0]
     end.flatten.inject(:+)
-    third = (10 - sum % 10) == check
+
+
+    third = (sum % 10) == 0
 
     # Checks to see that all three three separate blocks of code evaluate to true
     first && second && third

@@ -6,7 +6,7 @@ require_relative '../lib/credit_card'
 RSpec.describe CreditCard do
   let(:number) { 5555555555554444 }
   let(:exp_month) {"10"}
-  let(:exp_year) {"2017"}
+  let(:exp_year) {"11/2017"}
   let(:cvv) { 789 }
   let(:name) { "Max Blaushild" }
   let(:zip) { 12141 }
