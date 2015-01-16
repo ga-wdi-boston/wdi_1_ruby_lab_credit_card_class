@@ -33,13 +33,7 @@ class CreditCard
   end
 
   def validDate?
-    if Time.now.year < @exp.year
-      true
-    elsif Time.now.year == @exp.year && Time.now.month >= @exp.month
-      true
-    else
-      false
-    end
+    (Time.now.year < @exp.year) || Time.now.year == @exp.year && Time.now.month >= @exp.month
   end
 
   def company
