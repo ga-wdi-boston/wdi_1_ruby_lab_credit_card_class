@@ -33,8 +33,7 @@ class CreditCard
   end
 
   def validDate?
-    a= Time.new(Time.now.year, Time.now.month)
-    @exp - a >= 0
+    @exp - Time.new(Time.now.year, Time.now.month) >= 0
   end
 
   def company
