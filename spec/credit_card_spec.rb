@@ -3,8 +3,8 @@ require_relative '../lib/credit_card'
 RSpec.describe CreditCard do
 
   let(:name) { "JJ Johnson" }
-  let(:zip) { 02134 }
-  let(:card_number) { 375002196365327 }
+  let(:zip) { "02134" }
+  let(:card_number) { 4024007166175140 }
   let(:expiration) { Time.new(2018, 8) }
   let(:ccv) { 123 }
 
@@ -51,27 +51,33 @@ RSpec.describe CreditCard do
     end
   end
 
-  describe '#has_name?' do
+  describe '#valid_name?' do
     it 'returns true if credit_card has a name, false if not' do
-      expect(credit_card.has_name?).to be true
+      expect(credit_card.valid_name?).to be true
     end
   end
 
-  describe '#has_zip?' do
+  describe '#valid_zip?' do
     it 'returns true if @zip is the proper length, false if not' do
-      expect(credit_card.has_zip?).to be true
+      expect(credit_card.valid_zip?).to be true
     end
   end
 
-  describe '#is_current?' do
+  describe '#valid_expiration?' do
     it 'returns true if @expiration is in the future, false if not' do
-      expect(credit_card.is_current?).to be true
+      expect(credit_card.valid_expiration?).to be true
+    end
+  end
+
+  describe '#valid_card_number?' do
+    it 'returns true if @card_number passes the Luhn algorithm' do
+      expect(credit_card.valid_card_number?).to be true
     end
   end
 
   describe '#card_type' do
-    it 'returns the card issuer (e.g. Visa)' do
-      expect(credit_card.card_type).to be 'American Express'
+    it 'returns the name of the card issuer (e.g. Visa)' do
+      expect(credit_card.card_type).to be 'Visa'
     end
   end
 
