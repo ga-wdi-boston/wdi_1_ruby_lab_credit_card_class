@@ -2,7 +2,7 @@ require 'date'
 require_relative '../lib/credit_card'
 
 RSpec.describe CreditCard do
-  let(:number){372542760020512}
+  let(:number){373594695830365}
   let(:exp_date){"10/2016"} #I tried almost a hundred different ways to see if this could just be a 2 digit month and a 2 digit year, but haven't found a way yet, so I am leaving it as is
   let(:ccv){987}
   let(:name){"John Smith"}
@@ -45,10 +45,10 @@ RSpec.describe CreditCard do
     end
   end
 
-  # describe '#luhn_validity' do
-  #   it 'checks if credit card is valid' do
-  #     expect(credit_card.luhn_validity).to be true
-  #   end
-  # end
+  describe '#luhn_validity' do
+    it 'checks if credit card is valid' do
+      expect(credit_card.luhn_validity).to eq 10
+    end
+  end
 
 end

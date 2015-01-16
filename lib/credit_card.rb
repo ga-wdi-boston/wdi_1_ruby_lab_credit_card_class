@@ -49,8 +49,6 @@ class CreditCard
     (expiration_date - today) > 0
   end
 
-
-
   def card_type
     if number.to_s[0] == "4" &&
       (number.to_s.length == 13 ||
@@ -79,9 +77,25 @@ class CreditCard
     end
   end
 
-  def luhn_validity(number)
+  def luhn_validity
     # I am still working to create a working solution of this. I know that essentially I need to double every other digit (and if the product of doubling those digits is greater than 9, I have to sum the digits of the products), then I need to sum all of the digits, and then figure out if the total modulo 10 is equal to 0 (if the total ends in zero)
-
+    digits = number.to_s
+    array = digits.split('').map(&:to_i)
+    last_digit = array.pop
+    product = array.reverse.unshift(0).select.each_with_index { |str, i| i.odd? }
+    twice = product.map{|x| x * 2}
+    twice.map{|n| n - 9 if n > 9}
+    difference1 = twice.reject{|x| x > 9}
+    difference2 = twice.reject{|x| x < 9}
+    difference = difference1.map{|n| n -9}
+    differences = difference + difference1
+    sum1 = differences.map(&:to_i)
+    sum2 = array.reverse.unshift(0).select.each_with_index { |str, i| i.even? }
+    sum = sum1 + sum2
+    total = sum.inject(&:+)
+    remainder = total % 10
+    valid = 10 - remainder
+    return valid
   end
 
 
