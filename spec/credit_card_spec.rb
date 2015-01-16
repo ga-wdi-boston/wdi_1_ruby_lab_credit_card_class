@@ -33,7 +33,7 @@ RSpec.describe CreditCard do
     end
   end
 
-  describe '#validDate?' do
+  describe '#validDate?1' do
     it 'asks if the card has a valid date' do
       expect(creditCard.validDate?).to eq true
     end
@@ -85,7 +85,7 @@ RSpec.describe CreditCard do
     end
   end
 
-  describe '#validDate?' do
+  describe '#validDate?2' do
     it 'asks if the card has a valid date' do
       expect(creditCard2.validDate?).to eq false
     end
@@ -137,7 +137,7 @@ RSpec.describe CreditCard do
     end
   end
 
-  describe '#validDate?' do
+  describe '#validDate?3' do
     it 'asks if the card has a valid date' do
       expect(creditCard3.validDate?).to eq true
     end
