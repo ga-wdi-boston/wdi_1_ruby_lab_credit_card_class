@@ -2,11 +2,11 @@ require_relative '../lib/credit_card'
 
 RSpec.describe CreditCard do
   let(:number) { "5555555555554444" }
-  let(:exp) { [2, 2016] }
+  let(:exp) { Time.new(2016, 2) }
   let(:ccv) {"123"}
   let(:name) {"Testy"}
   let(:zip) {"02124"}
-  subject(:creditCard) { CreditCard.new(number, exp, ccv, name, zip) }
+  subject(:creditCard) { CreditCard.new(number: number, exp: exp, ccv: ccv, name: name, zip:  zip) }
 
 
   describe '#initialize' do
@@ -54,11 +54,11 @@ end
 
 RSpec.describe CreditCard do
   let(:number) { "75555554444" }
-  let(:exp) { [12, 2008] }
+  let(:exp) { Time.new(2008, 12) }
   let(:ccv) {"123"}
   let(:name) {""}
   let(:zip) {"0214"}
-  subject(:creditCard2) { CreditCard.new(number, exp, ccv, name, zip) }
+  subject(:creditCard2) { CreditCard.new(number: number, exp: exp, ccv: ccv, name: name, zip:  zip) }
 
 
   describe '#initialize' do
@@ -106,11 +106,11 @@ end
 
 RSpec.describe CreditCard do
   let(:number) { "0000000000000001" }
-  let(:exp) { [1, 2015] }
+  let(:exp) { Time.new(2015, 1) }
   let(:ccv) {"123"}
   let(:name) {"f f"}
   let(:zip) {"00000"}
-  subject(:creditCard3) { CreditCard.new(number, exp, ccv, name, zip) }
+  subject(:creditCard3) { CreditCard.new(number: number, exp: exp, ccv: ccv, name: name, zip:  zip) }
 
 
   describe '#initialize' do

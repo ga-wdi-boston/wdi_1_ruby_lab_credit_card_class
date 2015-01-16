@@ -1,9 +1,9 @@
 require 'pry-byebug'
 class CreditCard
 
-  def initialize(number, exp, ccv, name, zip)
+  def initialize(number:, exp:, ccv:, name:, zip:)
     @number = number
-    @exp = exp.to_a
+    @exp = exp
     @ccv = ccv
     @name = name
     @zip = zip
@@ -29,14 +29,13 @@ class CreditCard
       end
       total += sumDig(array[i])
     end
-    binding.pry
     total % 10 == 0
   end
 
   def validDate?
-    if Time.now.year < @exp[1]
+    if Time.now.year < @exp.year
       true
-    elsif Time.now.year == @exp[1] && Time.now.month >= @exp[0]
+    elsif Time.now.year == @exp.year && Time.now.month >= @exp.month
       true
     else
       false
@@ -69,6 +68,3 @@ class CreditCard
   end
 
 end
-
-card = CreditCard.new("1111111111111111",[1,2],"1","1","1")
-card.validNum?
