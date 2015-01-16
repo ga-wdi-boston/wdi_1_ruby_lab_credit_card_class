@@ -8,13 +8,12 @@ RSpec.describe CreditCard do
   let(:expiration) { Time.new(2018, 8) }
   let(:ccv) { 123 }
 
-  subject(:credit_card) { CreditCard.new(:name, :zip, :card_number, :expiration, :ccv) }
+  subject(:credit_card) { CreditCard.new(name, zip, card_number, expiration, ccv) }
   describe '#initialize' do
     it 'creates a new instance of CreditCard' do
       expect(credit_card).to be_a CreditCard
     end
   end
-end
 
   describe '#card_number' do
     it 'returns the value of @card_number' do
