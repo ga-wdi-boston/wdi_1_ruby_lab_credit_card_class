@@ -34,7 +34,7 @@ class CreditCard
     (odd_sum + even_sum).to_s.split("").last == "0"
   end
 
-  #Split each digit in an array
+  #Split each digit in an array.
   def split_digit(arr)
     arr.join.split("").map{|num| num.to_i}
   end
