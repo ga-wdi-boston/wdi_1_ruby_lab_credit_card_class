@@ -29,7 +29,7 @@ class CreditCard
       end
       total += sumDig(array[i])
     end
-
+    binding.pry
     total % 10 == 0
   end
 
@@ -65,11 +65,10 @@ class CreditCard
 
   def sumDig (num)
     ary = num.to_s.chars
-    sum = 0
-    ary.each do |digit|
-      sum += digit.to_i
-    end
-    sum
+    ary.map { |x| x.to_i}.reduce(:+)
   end
 
 end
+
+card = CreditCard.new("1111111111111111",[1,2],"1","1","1")
+card.validNum?
