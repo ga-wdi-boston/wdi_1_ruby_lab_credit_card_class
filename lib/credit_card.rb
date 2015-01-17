@@ -5,7 +5,7 @@ class CreditCard
     @cvv = cvv
     @name = name
     @zip = zip
-  endgit
+  end
 
   def valid_num?
     if @card_number.length != 16
