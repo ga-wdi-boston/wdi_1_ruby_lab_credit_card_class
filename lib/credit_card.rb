@@ -10,35 +10,26 @@ class CreditCard
   end
 
   def valid_num?
-    binding.pry
-    #  if card_number_array.length != 16
-    #    return false
-    # else
+  	binding.pry
+    if @card_number.length != 16
+      return false
+    else
+      card_number_array = @card_number.chars
+      last_digit = card_number_array.pop.to_i
+      int_array = card_number_array.reverse.map { |integer| integer.to_i }
+      int_array_odd = int_array
 
-    #  end
-
-    card_number_array = @card_number.chars
-    last_digit = card_number_array.pop.to_i
-
-
-    int_array = card_number_array.reverse.map { |integer| integer.to_i }
-
-    int_array_odd = int_array.select.each_with_index { |integer, index| index.odd? }
-    int_array_even = int_array.select.each_with_index { |integer, index| index.even? }
-
-    int_array_odd.map! { |integer| integer * 2 }
-
-    int_array_odd.map! do |integer|
-    	if integer > 9
-    		integer - 9
-    	else
-    		integer
-    	end
+      int_array_odd.map! { |integer| integer * 2 }
+      int_array_odd.map! do |integer|
+        if integer > 9
+          integer - 9
+        else
+          integer
+        end
+      end
     end
-
     sum = int_array_odd.reduce(:+) + int_array_even.reduce(:+)
-
-    if sum % 10 == last_digit
+    if (sum + last_digit) % 10 == 0
       return true
     else
       return false
@@ -62,7 +53,7 @@ class CreditCard
     elsif @card_number.slice(0..3).eql?("6101")
       card_type = "Discover"
     elsif @card_number.slice(0..1).eql?("51") || @card_number.slice(0..1).eql?("52") || @card_number.slice(0..1).eql?("53") || @card_number.slice(0..1).eql?("54") || @card_number.slice(0..1).eql?("55")
-      card_type = "Master Card"
+      card_type = "MasterCard"
     end
   end
 end
