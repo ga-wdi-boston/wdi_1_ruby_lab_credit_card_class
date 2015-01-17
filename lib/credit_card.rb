@@ -1,5 +1,3 @@
-require 'pry'
-
 class CreditCard
   def initialize(card_number, exp_date, cvv, name, zip)
     @card_number = card_number
@@ -7,32 +5,26 @@ class CreditCard
     @cvv = cvv
     @name = name
     @zip = zip
-  end
+  endgit
 
   def valid_num?
-  	binding.pry
     if @card_number.length != 16
       return false
     else
-      card_number_array = @card_number.chars
-      last_digit = card_number_array.pop.to_i
-      int_array = card_number_array.reverse.map { |integer| integer.to_i }
-      int_array_odd = int_array
-
-      int_array_odd.map! { |integer| integer * 2 }
-      int_array_odd.map! do |integer|
-        if integer > 9
-          integer - 9
-        else
-          integer
+      nums = @card_number.to_s.split("")
+      checkdigit = nums[nums.length - 1]
+      nums[nums.length - 1] = 0
+      nums.reverse!
+      sum = 0
+      for i in 1..nums.length
+        if i % 2 == 0
+          sum = sum + nums[i].to_i
+          next
         end
+        nums[i] = (nums[i].to_i * 2 < 10 ) ? (nums[i].to_i * 2) : (nums[i].to_i * 2 - 9)
+        sum = sum + nums[i].to_i
       end
-    end
-    sum = int_array_odd.reduce(:+) + int_array_even.reduce(:+)
-    if (sum + last_digit) % 10 == 0
-      return true
-    else
-      return false
+      (10 - sum % 10).to_i == checkdigit.to_i
     end
   end
 
