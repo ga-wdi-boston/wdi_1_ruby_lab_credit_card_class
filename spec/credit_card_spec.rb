@@ -69,9 +69,45 @@ RSpec.describe CreditCard do
     end
   end
 
+  # describe '#valid_card_number?' do
+  #   it 'returns true if @card_number passes the Luhn algorithm' do
+  #     expect(credit_card.valid_card_number?).to be true
+  #   end
+  # end
+
+    describe '#convert_to_array' do
+    it 'converts the cc number string into an array of digits' do
+      expect(credit_card.convert_to_array).to eq [4,0,2,4,0,0,7,1,6,6,1,7,5,1,4,0]
+    end
+  end
+
+  describe '#pop' do
+    it 'removes the last item in the array and saves it' do
+      expect(credit_card.cc_num_pop).to eq [4,0,2,4,0,0,7,1,6,6,1,7,5,1,4]
+    end
+  end
+
+  describe '#cc_num_reverse' do
+    it 'reverses the array and returns the reversed array' do
+      expect(credit_card.cc_num_reverse).to eq [4,1,5,7,1,6,6,1,7,0,0,4,2,0,4]
+    end
+  end
+
+  describe '#mutate_array' do
+    it 'multiplies the odd positioned numbers (0+1 index), subtracts 9 if the product is greater than 9' do
+      expect(credit_card.mutate_array).to eq [8,1,1,7,2,6,3,1,5,0,0,4,4,0,8]
+    end
+  end
+
+  describe '#sum_array' do
+    it 'sums the values of the entire array plus the checksum' do
+      expect(credit_card.sum_array).to eq 50
+    end
+  end
+
   describe '#valid_card_number?' do
-    it 'returns true if @card_number passes the Luhn algorithm' do
-      expect(credit_card.valid_card_number?).to be true
+    it 'returns a boolean based on the sum' do
+      expect(credit_card.valid_card_number?).to eq true
     end
   end
 
@@ -80,5 +116,4 @@ RSpec.describe CreditCard do
       expect(credit_card.card_type).to be 'Visa'
     end
   end
-
 end
