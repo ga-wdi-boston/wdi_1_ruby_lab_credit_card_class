@@ -33,8 +33,10 @@ class CreditCard
     valid_name? && valid_zip? && valid_expiration? && valid_card_number?
   end
 
+# consider using something like:
+# if name && !(name.empty?)
   def valid_name?
-    !( @name.empty? )
+    @name && !(@name.empty?)
   end
 
   def valid_zip?
@@ -53,16 +55,14 @@ class CreditCard
 # Add all the numbers together
 # The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
   def valid_card_number?
-    card_num_array = @card_number.to_s.chars.map do |number|
-      number.to_i
-    end
+    card_num_array = @card_number.to_s.chars.map { |number| number.to_i }
     check_digit = card_num_array.pop
     card_num_array.reverse!
     card_num_array.each_with_index do |number, index|
       if index % 2 == 0
-        card_num_array[number] *= 2
-        if number > 9
-          card_num_array[number] -= 9
+        card_num_array[index] *= 2
+        if card_num_array[index] > 9
+          card_num_array[index] -= 9
         end
       end
     end
