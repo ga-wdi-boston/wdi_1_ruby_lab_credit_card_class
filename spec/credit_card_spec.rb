@@ -69,12 +69,6 @@ RSpec.describe CreditCard do
     end
   end
 
-  # describe '#valid_card_number?' do
-  #   it 'returns true if @card_number passes the Luhn algorithm' do
-  #     expect(credit_card.valid_card_number?).to be true
-  #   end
-  # end
-
     describe '#convert_to_array' do
     it 'converts the cc number string into an array of digits' do
       expect(credit_card.convert_to_array).to eq [4,0,2,4,0,0,7,1,6,6,1,7,5,1,4,0]
@@ -105,9 +99,16 @@ RSpec.describe CreditCard do
     end
   end
 
+# There seem to be multiple versions of the Luhn algorithm
+# This is from http://www.freeformatter.com/credit-card-number-generator-validator.html
+# Drop the last digit from the number. The last digit is what we want to check against
+# Reverse the numbers
+# Multiply the digits in odd positions (1, 3, 5, etc.) by 2 and subtract 9 to all any result higher than 9
+# Add all the numbers together
+# The check digit (the last number of the card) is the amount that you would need to add to get a multiple of 10 (Modulo 10)
   describe '#valid_card_number?' do
-    it 'returns a boolean based on the sum' do
-      expect(credit_card.valid_card_number?).to eq true
+    it 'returns a boolean based on the Luhn algorithm' do
+      expect(credit_card.valid_card_number?).to be true
     end
   end
 
